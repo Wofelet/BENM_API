@@ -21,11 +21,6 @@ class DepartamentoController extends Controller
         return response()->json($respuesta,200);
     }
 
-}
-
-class DepartamentoController extends Controller
-{
-    //
     public function obtenerDepartamento($iddepto){
         $Depto = new Departamento();
         $valores = $Depto->where("id_departamento",$iddepto)->get();
@@ -39,11 +34,6 @@ class DepartamentoController extends Controller
         return response()->json($respuesta,200);
     }
 
-}
-
-class DepartamentoController extends Controller
-{
-    //
     public function obtenerDepartamentosPorZona($idzona){
         $Depto = new Departamento();
         $valores = $Depto->where("id_zona",$idzona)->get();
@@ -58,6 +48,7 @@ class DepartamentoController extends Controller
     }
 
     public function nuevoDepto(Request $req){
+
         $Depto = new Departamento();
         $Depto->id_zona = $req->idzona;
         $Depto->nombre_departamento = $req->nombredepto;
@@ -65,12 +56,13 @@ class DepartamentoController extends Controller
         $valores = $Depto->where("id_departamento",$Depto->id_departamento)->get();
         $respuesta = [
             "success"=> true,
-            "msg"=>"Valores devueltos por el Endpoint obtenerDepartamentosPorZona",
+            "msg"=>"Valores devueltos por el Endpoint nuevoDepto",
             "data"=>$valores,
             "error"=>"",
             "total"=>sizeof($valores)
         ];
         return response()->json($respuesta,200);
     }
+
 
 }
